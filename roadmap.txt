@@ -1,0 +1,70 @@
+Html (skelton) - Hypertext markup language
+Css/Css3 (Style) - Cascading style sheet
+Boostrap - BS
+Js (page interactivity) Javascript
+
+Advance Mern Stack 
+
+M - MongoDb
+E - ExpressJs
+R - React Js (Frontend framework) 2.5 month
+N - NodeJs (Backend - Create - Edit/Update - Delete - Read -> CRUD);
+
+Frontend = ReactJs + Pre-req
+Back End = Crud + (login + signup) CRUD API - Url
+
+
+CMS = FRONT-END - Website (React) 6 mont
+BACKEND - Dashboard/ Admin Panel
+
+Folder Structure
+abc  (website)
+	- assets
+		images, 
+		css
+		js
+		videos
+		audios
+	
+	- pages
+		home
+		about
+		etc
+	home
+	about
+	etc
+
+
+
+
+
+About us     x
+aboutus    
+about-us
+about_us
+--------------
+
+ats resume
+git profile
+portfolio
+linkedin
+other
+	freelancing - fiverr
+	canva
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
