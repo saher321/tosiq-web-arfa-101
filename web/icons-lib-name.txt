@@ -1,0 +1,13 @@
+1 - font awesome
+2 - ionicons
+3 - lucide icons
+4 - flate icons
+5 - phosporus icons
+6 - box icons
+
+--------------------
+
+evaluate following expression:
+a=10, b=39, c=101, total_marks=450, sum=0, avg=0;
+
+find sum, avg, percentage
