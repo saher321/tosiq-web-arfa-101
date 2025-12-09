@@ -18,8 +18,7 @@ var english     = (parseInt(prompt("Enter marks english")));
 var urdu        = (parseInt(prompt("Enter marks urdu")));
 var computer    = (parseInt(prompt("Enter marks computer")));
 var total_marks = 300;
-
-var avg=0;
+var avg         = 0;
 
 avg = (english + urdu + computer) / 3;
 console.log(avg.toFixed(2));
