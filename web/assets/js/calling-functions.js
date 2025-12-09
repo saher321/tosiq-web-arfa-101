@@ -1,4 +1,8 @@
 function add (a,b) {
+    var type = typeof a;
+    console.log(type)
+    if (type == 'string')
+        return "Error: Can not add string to number";
     return a + b;
 }
 
