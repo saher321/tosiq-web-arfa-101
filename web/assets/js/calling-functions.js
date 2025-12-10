@@ -19,3 +19,11 @@ function subtraction (a,b) {
 function multiply (a,b) {
     return a * b;
 }
+
+function checkEvenOdd(a) {
+    if (a%2==0) {
+        return a + " is EVEN number";
+    } else {
+        return a + " is ODD number";
+    }
+}

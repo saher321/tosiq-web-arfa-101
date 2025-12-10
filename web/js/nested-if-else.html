@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <fieldset>
+        <legend>Print value</legend>
+        <input type="number" id="num1" placeholder="enter 1st number">
+        <input type="number" id="num2" placeholder="enter 2nd number">
+        <button onclick="printValue()">Show result</button>
+
+        <div id="result"></div>
+    </fieldset>
+
+    <script>
+        function printValue() {
+            var result = document.getElementById("result")
+            var a = document.getElementById("num1").value;
+            var b = document.getElementById("num2").value;
+
+            if (a.length == 0) {
+                alert("1st field is required")
+                return;
+            } else if (b.length == 0) {
+                alert("2nd field is required")
+                return;
+            }
+
+            var sum = parseInt(a) + parseInt(b);
+            result.innerText = "Sum is: " + sum;
+            console.log(sum);
+        }
+    </script>
+    
+</body>
+</html>

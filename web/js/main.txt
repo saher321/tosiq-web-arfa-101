@@ -1,0 +1,4 @@
+write a program that tells us given number is even or odd
+
+input: 3
+output: 3 is odd number
