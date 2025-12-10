@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <fieldset>
+        <legend>C &deg; to F &deg;</legend>
+        <input type="number" id="num1" placeholder="Celsius val">
+
+        <button onclick="printValue()">Convert to F &deg;</button>
+        
+        <input type="number" id="num2" placeholder="Converted Fahrenite val" disabled>
+
+        <div id="result"></div>
+    </fieldset>
+
+    <script>
+        function printValue() {
+            var c = document.getElementById("num1").value;
+            var result = document.getElementById("num2");
+
+            if (c.length == 0) {
+                alert("Celsius field is required")
+                return;
+            }
+
+            var fahrenite = 9/5 * parseInt(c) + 32 ;
+            result.value = fahrenite.toFixed(2);
+        }
+        
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <fieldset>
+        <legend>Print Day with number</legend>
+        <input type="number" id="num1" placeholder="Enter day number 1-7">
+
+        <button onclick="printValue()">Show Day</button>
+        <br>
+        <div id="result"></div>
+    </fieldset>
+
+    <script>
+        // simple (arithmatic operations)
+        // if statement
+        // if-else
+        // if-elseif-else
+        // switch
+        // loops (for-loop, while-loop, foreach-loop, do-while)
+        // arrays
+        // strings
+        // other method (string + arrays + loop)
+        // DOM
+        // form handling
+        // form validation
+        // DOM css
+        // localstorage
+
+        function printValue() {
+
+            var dayNum = document.getElementById("num1").value;
+            var result = document.getElementById("result");
+
+            switch(dayNum) {
+                case "1":
+                    result.innerText = "It is Monday";
+                    break;
+                case "2":
+                    result.innerText = "It is Tuesday";
+                    break;
+                case "3":
+                    result.innerText = "It is Wednesday";
+                    break;
+                case "4":
+                    result.innerText = "It is Thursday";
+                    break;
+                case "5":
+                    result.innerText = "It is Friday";
+                    break;
+                case "6":
+                    result.innerText = "It is Saturday";
+                    break;
+                case "7":
+                    result.innerText = "It is Sunday";
+                    break;
+
+                default:
+                    result.innerText = "Invalid number";
+                
+            }
+
+        }
+    // assignment: 10-dec-2025
+    // print month name with its given valid number
+    </script>
+    
+</body>
+</html>
