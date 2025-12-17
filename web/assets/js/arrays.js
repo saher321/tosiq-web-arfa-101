@@ -4,15 +4,15 @@ var list = ["Orange", "Apple", "Vegetables", "Lahore", "Shoes"];
 // list.push("T-shirt");
 // list.unshift("Tiger");
 // list.sort();
-// console.log(list);
+console.log(list);
 // console.log(list.filter((item)=> item == "Apple" )) // searching
 var listTag = document.getElementById("list");
 // console.log(list.length);
 // console.log(list[3]);
 //              3        4
 for (var i = 0; i < list.length; i++) {
-    console.log(list[i]);
-    listTag.innerHTML += "<option>" + list[i] + "</option>"; // + means append value
+  console.log(list[i]);
+  listTag.innerHTML += "<option>" + list[i] + "</option>"; // + means append value
 }
 // dry run;
 // i = 0 => list[i] = Orange

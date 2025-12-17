@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>Sum of all values</h1>
+
+    <input type="text" id="number">
+
+    <button onclick="printSum()">Print Sum</button>
+
+    <div id="result"></div>
+
+    <script>
+        function printSum () {
+            var num = parseInt(document.getElementById("number").value);
+            var res = document.getElementById("result");
+            if (typeof num == "string" || !num) {
+                alert("Provide valid number");
+                return;
+            }
+
+            var sum = 0;
+            for (var i = 1; i <= num; i++) {
+                sum = sum + i;
+            }
+            // res.innerText = "Sum is: " + (sum); // old method
+            res.innerText = `Sum is: ${sum}`; // new method
+        }
+    </script>
+
+</body>
+</html>
