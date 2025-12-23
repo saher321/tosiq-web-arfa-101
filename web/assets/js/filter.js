@@ -55,6 +55,35 @@ function getRole() {
     // userRows.innerHTML = mydata;
 }
 
+function searchUsers() {
+    var searchText = document.getElementById("text").value;
+    var userRows = document.getElementById("tbody");
+    var mydata = ``;
+    console.log(searchText);
+
+    if (searchText === "") {
+        fetchAllUsers();
+        return;
+    }
+
+    const selectedUsers = allUsers.filter( (user) => { 
+        return (user.name == searchText || user.email == searchText || user.role == searchText) 
+    });
+
+    selectedUsers.map( (user, i) => {
+        mydata += `
+        <tr>
+            <td>${i+1}</td>
+            <td>${user.name}</td>
+            <td>${user.email}</td>
+            <td>${user.role}</td>
+        </tr>
+        `;
+    });
+    userRows.innerHTML = mydata;
+    // userRows.innerHTML = mydata;    
+}
+
 
 function capitalizeFirstLetter(string) {
   if (!string) {
