@@ -57,6 +57,7 @@ function getRole() {
 
 function searchUsers() {
     var searchText = document.getElementById("text").value;
+
     var userRows = document.getElementById("tbody");
     var mydata = ``;
     console.log(searchText);
@@ -67,7 +68,7 @@ function searchUsers() {
     }
 
     const selectedUsers = allUsers.filter( (user) => { 
-        return (user.name == searchText || user.email == searchText || user.role == searchText) 
+        return (user.name.match(searchText) || user.email.match(searchText) || user.role.match(searchText)) 
     });
 
     selectedUsers.map( (user, i) => {
