@@ -6,6 +6,47 @@
     <title>Document</title>
 </head>
 <body>
+    <h1>JQuery</h1>
+
+    <input type="text" id="number1">
+    <input type="text" id="number2">
+
+    <button id="btn">Show value</button>
+
+
+    <script src="../assets/jquery.js"></script>
     
+    <script>
+        
+        $(document).ready( function () {
+            
+
+            $("#btn").on("click" , function() {
+
+                var n1 = Number($("#number1").val());
+                var n2 = Number($("#number2").val());
+                if (!n1 || !n2) {
+                    alert("Please enter values");
+                    return;
+                }
+
+
+                var sum = n1 + n2;
+                console.log(`Sum is ${sum}`)
+            })
+
+
+
+
+            // add(3,7)
+            function add(a,b) {
+
+                console.log(a+b)
+
+            }
+            
+        })
+        
+    </script>
 </body>
 </html>
