@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>C to F</h1>
+
+    <input type="text" id="number1">
+
+    <button id="btn">Convert</button>
+    
+    <input type="text" id="number2" disabled>
+
+
+
+    <script src="../assets/jquery.js"></script>
+    
+    <script>
+        
+        $(document).ready( function () {
+            
+            $("#btn").on("click" , function() {
+
+                var n1 = Number($("#number1").val());
+
+                var result = 9/5 * n1 + 32;
+
+                $("#number2").val(result);
+
+            })
+            
+        })
+        
+    </script>
+</body>
+</html>
