@@ -49,9 +49,24 @@ class Cars {
     }
 }
 
-let c = new Cars("Toyota", 2007);
+class Toyota extends Cars {
 
-console.log(c.getDetails())
+    constructor(make, model, variant) {
+        super(make, model)
+        this.variant = variant;
+    }
+
+    getDetails () {
+        console.log(`My car name is ${this.make} has model number is ${this.model + 1} with the variant of ${this.variant}`);     
+    }
+}
+
+// let c = new Cars("Toyota", 2007);
+// console.log(c.getDetails())
+
+let t = new Toyota("Toyota Camry", 2007, "2.0cc");
+console.log(t.getDetails())
+
 
 
 
