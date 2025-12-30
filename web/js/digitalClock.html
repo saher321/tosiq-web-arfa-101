@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1 id="clock"></h1>
+
+    <!-- js -->
+    <script>
+        showTime();
+        function showTime() {
+            let c = document.getElementById("clock");
+            
+            const month_names  = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+            setInterval(() => {
+                const d = new Date();
+                let h = d.getHours();
+                let m = d.getMinutes();
+                let s = String(d.getSeconds()).padStart(2, "0");
+
+                let date = d.getDate();
+                let month = d.getMonth();
+                let year = d.getFullYear();
+
+                c.innerText = `${date}, ${month_names[month]} ${year} ${h}:${m}:${s}`
+            }, 1000)
+
+        }
+
+    </script>
+
+</body>
+</html>
