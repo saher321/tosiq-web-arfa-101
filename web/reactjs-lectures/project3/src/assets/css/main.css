@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+body {
+    background-color: #333;
+}
+
+.heading {
+    color: red;
+    background-color: yellowgreen
+}
