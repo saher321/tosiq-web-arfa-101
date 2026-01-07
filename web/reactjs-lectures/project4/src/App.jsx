@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { userData } from './resource/userdata'
+import { userData } from './resource/userdata.js'
 
 const App = () => {
 
