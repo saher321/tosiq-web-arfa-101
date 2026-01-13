@@ -1,10 +1,11 @@
 import React from 'react'
+import WebLayout from '../layouts/WebLayout'
 
 const Contact = () => {
   return (
-    <div>
+    <WebLayout>
       Contact
-    </div>
+    </WebLayout>
   )
 }
 

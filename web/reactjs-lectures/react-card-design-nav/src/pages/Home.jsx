@@ -1,10 +1,11 @@
 import React from 'react'
+import WebLayout from '../layouts/WebLayout'
 
 const Home = () => {
   return (
-    <div>
+    <WebLayout>
       Home page
-    </div>
+    </WebLayout>
   )
 }
 
