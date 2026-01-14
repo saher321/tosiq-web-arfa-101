@@ -11,7 +11,7 @@ const About = () => {
           {
           teams.map((team) => {
             return (
-              <div key={team.id} className='col-span-4'>
+              <div key={team.id} className='col-span-3'>
                 <TeamItem team={team} />
               </div>
             )
