@@ -5,9 +5,9 @@ var allUsers = [
     { name: "Jack", email: "jack@email.coom", role: "Admin" },
     { name: "Abdullah", email: "abdullah@email.coom", role: "User" },
 ];
-fetchAllUsers();
+fetchAllUsers(allUsers);
 
-function fetchAllUsers() {
+function fetchAllUsers(allUsers) {
     var userRows = document.getElementById("tbody");
     var mydata = ``;
 

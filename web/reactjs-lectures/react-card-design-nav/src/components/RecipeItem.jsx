@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router'
 
 const RecipeItem = ({ recipe }) => {
   return (
@@ -7,7 +8,7 @@ const RecipeItem = ({ recipe }) => {
         <img className='object-cover h-40 w-full rounded-lg' src={recipe.image} alt="" />
     </div>
       <div className='m-1 text-sm font-bold'>
-        {recipe.name}
+        <NavLink to={`/recipes/${recipe.id}`}>{recipe.name}</NavLink>
       </div>
 
       <div className='m-1 my-2 text-md'>

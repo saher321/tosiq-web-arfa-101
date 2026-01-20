@@ -30,14 +30,12 @@ const Recipies = () => {
 
     const getSelectedValue = async (e) => {
         let selectedVal = e.target.value;
-        const newData = recipies.filter((recipe) => {
-            return recipe.difficulty == selectedVal
-        });
+        const newData = recipies.filter((recipe) => recipe.difficulty == selectedVal );
 
         if (newData.length > 0) {
             setFilteredData(newData)
         } else {
-            await getRecipies()
+            await getRecipies();
             setFilteredData([])
         }
     }
@@ -53,7 +51,7 @@ const Recipies = () => {
     return (
         <WebLayout>
             <div className="my-4 mx-auto max-w-5xl">
-                <select onChange={getSelectedValue}>
+                <select className='mb-2 border-2 border-gray-400 rounded bg-gray-100' onChange={getSelectedValue}>
                     <option value="">All</option>
                     <option value="Easy">Easy</option>
                     <option value="Medium">Medium</option>
