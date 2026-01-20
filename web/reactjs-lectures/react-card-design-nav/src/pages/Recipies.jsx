@@ -8,7 +8,6 @@ import {BeatLoader} from 'react-spinners'
 const Recipies = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [recipies, setRecipies] = useState([]);
-
     useEffect(() => {
         const getRecipies = async () => {
             try {
@@ -25,6 +24,16 @@ const Recipies = () => {
         }
         getRecipies();
     }, []);
+
+    const getSelectedValue = (e) => {
+        let selectedVal = e.target.value;
+        const newData = recipies.filter((recipe) => {
+            return recipe.difficulty == selectedVal
+        });
+        setRecipies(newData)
+    }
+
+
     if (isLoading) {
         return (
         <div className='flex items-center justify-center h-[100vh]'>
@@ -35,7 +44,12 @@ const Recipies = () => {
     return (
         <WebLayout>
             <div className="my-4 mx-auto max-w-5xl">
-
+                <select onChange={(e) => getSelectedValue(e)}>
+                    <option value="">All</option>
+                    <option value="Easy">Easy</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Hard">Hard</option>
+                </select>
                 {
                     isLoading ? 
                     <BeatLoader /> :

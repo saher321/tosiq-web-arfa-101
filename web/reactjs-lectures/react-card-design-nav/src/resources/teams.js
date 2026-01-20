@@ -74,3 +74,26 @@ const teams = [
 ];
 
 export default teams;
+
+
+
+
+///
+// const test = [ 34, "Yahya", "A", "C", 65, "Arman" ]
+
+// output: 
+// [ 34, 65 ]
+// [ "Yahya", "Arman" ]
+// [ "A", "C" ]
+
+
+
+
+
+
+
+
+
+
+
+

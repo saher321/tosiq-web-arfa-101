@@ -10,12 +10,12 @@ const Navbar = () => {
     {url: '/recipies', title: "Recipes"},
   ]
 
-  const arr2 = [
-    {url: '/help', title: "Help"},
-  ]
-  const newArr = [...links, ...arr2]
+  // const arr2 = [
+  //   {url: '/help', title: "Help"},
+  // ]
+  // const newArr = [...links, ...arr2]
 
-  console.log(newArr);
+  // console.log(newArr);
 
   return (
     <div className='mt-3 flex items-center justify-center'>
@@ -44,18 +44,18 @@ export default Navbar
 
 // 
 
-var a = 10;
+// var a = 10;
 
-{
-  var a = 40;
-}
+// {
+//   var a = 40;
+// }
 
-let b = a;
-{
-  let b = 4000;
-}
+// let b = a;
+// {
+//   let b = 4000;
+// }
 
-console.log(b)
+// console.log(b)
 
 
 
