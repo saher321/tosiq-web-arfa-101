@@ -11,16 +11,16 @@ const RecipeItem = ({ recipe }) => {
       </div>
 
       <div className='m-1 my-2 text-md'>
-        <span className='p-1 border-2 border-green-700 bg-green-200 rounded-full'>
+        <span className='font-light text-xs p-1 border-2 border-green-700 bg-green-200 rounded-full'>
         {recipe.difficulty}
         </span>
       </div>
 
       <hr className='text-gray-200'/>
-      <div className='m-1 flex gap-2'>
+      <div className='m-1 flex flex-wrap gap-2'>
         {recipe?.tags.map((tag) => {
             return(
-                <span className='block text-xs border-2 border-purple-700 bg-purple-200 p-1 rounded-full '>{tag}</span>
+                <span className='block text-[7px] font-bold border-2 border-purple-700 bg-purple-200 p-1 rounded-full '>{tag}</span>
             )
         })}
       </div>
