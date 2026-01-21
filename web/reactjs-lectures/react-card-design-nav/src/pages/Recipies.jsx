@@ -64,7 +64,7 @@ const Recipies = () => {
                             {recipies.length > 0 ? 
                             (filteredData.length > 0 ? filteredData : recipies).map((recipe) => {
                                 return (
-                                    <div key={recipe.id} className='col-span-3'>
+                                    <div key={recipe.id} className='lg:col-span-3 md:col-span-4 sm:col-span-6  max-w-xs:col-span-6'>
                                         <RecipeItem recipe={recipe} />
                                     </div>
                                 )
