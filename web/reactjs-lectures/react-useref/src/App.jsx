@@ -1,5 +1,4 @@
 import React, { useRef } from 'react'
-import { Button } from "@/components/ui/button"
 const App = () => {
 
   let email = useRef(null);
@@ -21,10 +20,6 @@ const App = () => {
       <input ref={email} type="email" placeholder='Enter user email' />
       <input ref={password} type="password" placeholder='Enter user password' />
       <button onClick={handleGetValue}>Get Value</button>
-
-      <div className="flex min-h-svh flex-col items-center justify-center">
-      <Button>Click me</Button>
-    </div>
     </div>
   )
 }
