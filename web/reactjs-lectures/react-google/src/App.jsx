@@ -1,7 +1,9 @@
 import { useGoogleLogin } from '@react-oauth/google';
-import React from 'react'
+import React, { useState } from 'react'
 
 const App = () => {
+
+  const [userProfile, setUserProfile] = useState(null)
 
   const loginWithGoogle = useGoogleLogin({
     onSuccess: async (token) => {
@@ -11,12 +13,13 @@ const App = () => {
             Authorization: `Bearer ${token.access_token}`
           }
         });
-        
+
         const userInfo = await response.json();
 
         if (!userInfo) return console.log("User not found");
 
         console.log(userInfo)
+        setUserProfile(userInfo)
       } catch (error) {
         console.log("Error: ", error)
       }
@@ -24,7 +27,11 @@ const App = () => {
   })
   return (
     <div>
-      Welcome, PNY
+      <h1>
+        Welcome, {userProfile?.name}
+      </h1> 
+      <p>Email: {userProfile?.email}</p>
+      <img src={userProfile?.picture} alt="" />
       <hr />
 
       <button onClick={() => loginWithGoogle()}>Login with Google</button>
