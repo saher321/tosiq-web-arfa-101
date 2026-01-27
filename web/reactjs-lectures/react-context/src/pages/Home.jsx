@@ -9,7 +9,10 @@ const Home = () => {
     <WebLayout>
       <section>
         Home page
-        <div>{data.name}</div>
+        <div>{data.userInfo?.id} - {data.name}</div>
+        <div>
+          <button onClick={data.showValueInConsole}>Print value</button>
+        </div>
       </section>      
     </WebLayout>
   )
