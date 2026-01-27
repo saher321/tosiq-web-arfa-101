@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { NavLink } from 'react-router'
+import AppName from './AppName'
+import { MyContext } from '../context/ContextStore'
 
 const Navbar = () => {
+  const data = useContext(MyContext);
 
   const links = [
     {url: '/', title: "Home"},
@@ -21,6 +24,10 @@ const Navbar = () => {
         <div className='w-fit p-4 rounded-full bg-gray-950 text-white'>
 
         <nav className='flex gap-3'>
+
+          <NavLink>
+            {data.APP_NAME}
+          </NavLink>
         
           {
             links.map((link, i) => {

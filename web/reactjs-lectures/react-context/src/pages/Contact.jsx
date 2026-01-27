@@ -3,12 +3,12 @@ import WebLayout from '../layouts/WebLayout'
 import { MyContext } from '../context/ContextStore';
 
 const Contact = () => {
-  let myname = useContext(MyContext);
+  const data = useContext(MyContext);
   return (
     <WebLayout>
       <section>
         Contact page
-        <div>{ myname }</div>
+        <div>{ data.name }</div>
       </section>
     </WebLayout>
   )

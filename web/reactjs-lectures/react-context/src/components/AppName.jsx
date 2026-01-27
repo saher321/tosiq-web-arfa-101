@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { MyContext } from '../context/ContextStore'
 const AppName = () => {
+
+  const data = useContext(MyContext);
+
   return (
     <>
-      React context
+      {data.APP_Name}
     </>
   )
 }
