@@ -1,5 +1,5 @@
 <footer>
 
-    &copy; copyright @ 2026
+    &copy; copyright @ <?php echo date("Y")?>
 
 </footer>
