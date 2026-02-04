@@ -10,6 +10,7 @@ include("./config/session.php");
 </head>
 <body>
     <h1>Admin page</h1>
+    <?php include("./templates/logout.php");?>
     <?php if(isset($_SESSION["userInfo"])) echo $_SESSION["userInfo"]["email"]?>
 </body>
 </html>
