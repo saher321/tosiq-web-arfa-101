@@ -26,7 +26,6 @@ if (isset($_POST["submit_login"])){
             "role" => $r
         ];
         header("Location: ./admin.php");
-
     } else if ($e == $user_email && $p == $user_pass && $r == $user_role) {
             $_SESSION["userInfo"] = [
                 "id" => 2,
