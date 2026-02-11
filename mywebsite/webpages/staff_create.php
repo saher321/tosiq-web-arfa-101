@@ -2,17 +2,25 @@
 include("../config/db.php");
 
 if(isset($_POST["creat_staff"])) {
+
+    $img    = $_FILES["staff_img"]["name"];
+
+    // print_r($i);
+    // die;
     $n      = $_POST["staff_name"];
     $e      = $_POST["staff_email"];
     $c      = $_POST["staff_contact"];
     $dn     = $_POST["staff_designation"]; // designation
     $dpt    = $_POST["staff_dept"]; // department
 
-    $query = "insert into staffs (name, email, contact, designation, department) values ('$n', '$e', $c, '$dn', '$dpt')";
+    $query = "insert into staffs (name, image, email, contact, designation, department) values ('$n', '$img', '$e', $c, '$dn', '$dpt')";
 
     $response = mysqli_query($connection, $query);
 
     if ($response) {
+
+        move_uploaded_file($_FILES["staff_img"]["tmp_name"], "./assets/uploads/staff_imgs/".$img);
+
         $_SESSION["staff_info"] = [
             "status" => true,
             "message"=> "Data added successfully"
@@ -36,6 +44,15 @@ if(isset($_POST["creat_staff"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <style>
+        .form-top{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+
 </head>
 <body>
 
@@ -50,11 +67,22 @@ if(isset($_POST["creat_staff"])) {
         }
     ?>
 </span>
-<form action="" method="post">
+<form action="" method="post" enctype='multipart/form-data'>
 
 <table border="1" cellpadding="10" cellspacing="0">
     <tr>
-        <td colspan="2">Add new staff</td>
+        <td colspan="2">
+            <div class="form-top">
+                <div>
+                    Add new staff
+                </div>
+                <div>
+                    <a href="./staff_list.php" target="_blank">
+                        View List
+                    </a>
+                </div>
+            </div>
+        </td>
     </tr>
     <tr>
         <td>
