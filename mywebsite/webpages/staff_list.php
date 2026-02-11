@@ -37,7 +37,14 @@
             <td><?php echo $staff['id']?></td>
             <td>
                 <img 
-                src="<?php echo './assets/uploads/staff_imgs/'. $staff['image']?>" width="36" height="36" alt="">
+                src="<?php
+                        if ($staff['image'] == null){
+                            echo './assets/uploads/staff_imgs/dummy-img.jpg';
+                        } else {
+                            echo './assets/uploads/staff_imgs/'. $staff["image"]; 
+                        } 
+                    ?>
+                    " width="36" height="36" alt="">
             </td>
             <td><?php echo $staff['name']?></td>
             <td><?php echo $staff['email']?></td>
