@@ -6,11 +6,12 @@
 
 
     if (isset($_GET['id'])) {
+
         $query = "delete from staffs where id=". $_GET['id'];
 
+        unlink("./assets/uploads/staff_imgs/".$_GET['img']);
         mysqli_query($connection, $query);
 
-        // unlink();
 
         header('Location: ./staff_list.php');
     }
@@ -71,7 +72,7 @@
                  <php echo $staff['id']?>">
                     Delete
                 </a> -->
-                <a href="#" onclick="del(<?php echo $staff['id']?>)">Delete</a>
+                <a href="#" onclick="del(<?php echo $staff['id']?>, <?php echo $staff['image']?>)">Delete</a>
             </td>
         </tr>
         <?php 
@@ -85,9 +86,10 @@
 
 <!-- js -->
  <script>
-    function del(id){
+    function del(id, img){
+        console.log(id)
         if(confirm("Delete this record?")){
-            window.location = `./staff_list.php?id=${id}`;
+            window.location = `./staff_list.php?id=${id}&img=${img}`;
         } else {
             return;
         }
