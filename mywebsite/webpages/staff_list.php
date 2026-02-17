@@ -43,8 +43,7 @@
                         } else {
                             echo './assets/uploads/staff_imgs/'. $staff["image"]; 
                         } 
-                    ?>
-                    " width="36" height="36" alt="">
+                    ?>" width="36" height="36" alt="">
             </td>
             <td><?php echo $staff['name']?></td>
             <td><?php echo $staff['email']?></td>
