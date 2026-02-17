@@ -67,12 +67,17 @@
             </td>
             <td><?php echo $staff['name']?></td>
             <td><?php echo $staff['email']?></td>
-            <td>Edit /
+            <td>
+                <a href="./staff_edit.php?id=<?php echo $staff['id']?>">
+                    Edit
+                </a> /
+                
+                <a href="#" onclick="del(<?php echo $staff['id']?>, <?php echo $staff['image']?>)">Delete</a>
+
                 <!-- <a href="./staff_list.php?id=
                  <php echo $staff['id']?>">
                     Delete
                 </a> -->
-                <a href="#" onclick="del(<?php echo $staff['id']?>, <?php echo $staff['image']?>)">Delete</a>
             </td>
         </tr>
         <?php 
