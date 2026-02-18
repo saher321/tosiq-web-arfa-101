@@ -2,10 +2,14 @@
     class DB {
         private $conn;
 
-        function __constructor(){
+        function __construct(){
 
             try {
-                $this->$conn = mysqli_connect("localhost", "root", "", "crud-101");
+                if ($_SERVER["SERVER_NAME"] == "localhost") { // local connection
+                    $this->$conn = mysqli_connect("localhost", "root", "", "crud-101");
+                } else { // live connection
+                    $this->$conn = mysqli_connect("localhost", "root", "", "crud-101");
+                }
             }catch(Exception $e) {
                 echo "Connection error: " . $e->getMessage();
                 die();
@@ -13,7 +17,7 @@
 
         }
 
-        function fetch_all_rows ($q) {
+        function query ($q) {
             $result = mysqli_query($this->$conn, $q);
             return $result;
         }

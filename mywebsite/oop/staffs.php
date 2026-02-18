@@ -1,4 +1,5 @@
 <?php
+    error_reporting(~E_ALL);
     include "./classes/db.php";
     include "./classes/staff.php";
 
@@ -29,7 +30,8 @@
         ?>
 
         <li>
-            <?php $data['name'] ?>
+            <?php echo $data['name'] ?> , <?php echo $data["email"]?>
+            
         </li>
 
         <?php
