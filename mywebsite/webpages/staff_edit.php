@@ -12,7 +12,44 @@ $staff = mysqli_fetch_assoc($query_conn);
 if (!$staff){
     echo "Staff data not found";
     return;
+}
 
+if (isset($_POST['update_staff'])) {
+
+    $img    = $_FILES["staff_img"]["name"];
+
+    $n      = $_POST["staff_name"];
+    $e      = $_POST["staff_email"];
+    $c      = $_POST["staff_contact"];
+    $dn     = $_POST["staff_designation"]; // designation
+    $dpt    = $_POST["staff_dept"]; // department
+
+    if ($img) {
+        $query  = "update staffs set name='$n', image='$img', email='$e', 
+        contact='$c', designation='$dn', department='$dpt' where id=$id";
+
+        move_uploaded_file($_FILES["staff_img"]["tmp_name"], "./assets/uploads/staff_imgs/".$img);
+        
+    } else {
+        $query  = "update staffs set name='$n', email='$e', 
+        contact='$c', designation='$dn', department='$dpt' where id=$id";
+    }
+
+    $result = mysqli_query($connection, $query);
+
+    if ($result) {
+        $_SESSION["staff_info"] = [
+            "status" => true,
+            "message"=> "Data update successfully"
+        ];
+        header("Location: ./staff_list.php");
+    } else {
+        $_SESSION["staff_info"] = [
+            "status" => true,
+            "message"=> "Failed to update data"
+        ];
+        return;
+    }
 }
 
 
