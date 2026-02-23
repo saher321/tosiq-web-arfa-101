@@ -1,0 +1,21 @@
+Pre
+must install Xampp to run laravel project
+
+steps to install laravel
+
+1. composer-setup.exe 
+	=> https://getcomposer.org/download/
+
+2. cmd => composer global require laravel/installer
+
+3. to create laravel project
+	=> laravel new project_name
+
+4. Api testing => install Postman software
+
+
+
+http://localhost:8000/api/category
+
+
+
