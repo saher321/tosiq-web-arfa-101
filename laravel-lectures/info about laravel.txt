@@ -18,4 +18,24 @@ steps to install laravel
 http://localhost:8000/api/category
 
 
+-----------------------------
 
+commands:
+php artisan make:model Staff
+
+laravel:
+mvc pattern
+Model      => database related file
+View       => UI(webpages)
+API        => end point url
+Controller => business logic
+
+
+
+
+///////
+to run project/application
+terminal: composer run dev 
+	-> this will provide url like :: http://localhost:8000/
+creates the url file in route folder:
+	=> php artisan install:api
