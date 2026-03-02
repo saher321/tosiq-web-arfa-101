@@ -8,7 +8,6 @@ class Staff extends Model
 {
     //
     protected $table    = "staffs";
-    public $timestamps  = false;
     
     protected $fillable = [
         'name',

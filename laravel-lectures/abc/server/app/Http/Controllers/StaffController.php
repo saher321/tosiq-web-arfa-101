@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Staff;
 
-class EmployeeController extends Controller
+class StaffController extends Controller
 {
     // cmd :: php artisan make:controller ControllerName
     function staffList(){
