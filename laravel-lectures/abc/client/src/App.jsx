@@ -1,10 +1,14 @@
 import React from 'react'
+import Dashboard from './pages/Dashboard'
+import { Routes, Route } from 'react-router'
+import Departments from './pages/department/Departments'
 
 const App = () => {
   return (
-    <div className='bg-purple-200 text-purple-900'>
-      App
-    </div>
+    <Routes>
+      <Route path="/" element={<Dashboard />} />
+      <Route path="/departments" element={<Departments />} />
+    </Routes>
   )
 }
 

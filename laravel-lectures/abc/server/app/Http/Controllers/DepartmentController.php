@@ -17,3 +17,4 @@ class DepartmentController extends Controller
         return $departments;
     }
 }
+// php artisan install:api
