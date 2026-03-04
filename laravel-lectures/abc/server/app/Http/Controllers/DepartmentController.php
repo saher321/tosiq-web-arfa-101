@@ -16,5 +16,8 @@ class DepartmentController extends Controller
         ];
         return $departments;
     }
+    public function store(Request $request){
+        dd($request->all());
+    }
 }
 // php artisan install:api

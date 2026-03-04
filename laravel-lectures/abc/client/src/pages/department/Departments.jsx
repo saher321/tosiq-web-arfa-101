@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import AdminLayout from '../../layouts/AdminLayout'
 import axios from  'axios';
 import { DEPARTMENTS_API } from '../../utils/server_apis'
+import { Link } from 'react-router';
 
 const Departments = () => {
   const [departments, setDepartments] = useState([]);
@@ -34,9 +35,15 @@ const Departments = () => {
     <AdminLayout>
         <div className="min-h-screen">
       <div className="max-w-4xl mx-auto bg-white shadow rounded-lg">
-        <h2 className="text-xl font-semibold p-4 border-b border-gray-200">
+        
+        <div>
+          <h2 className="text-xl font-semibold p-4 border-b border-gray-200">
           Departments & Students
         </h2>
+        <div>
+          <Link to={'/add-department'}>Add Department</Link>
+        </div>
+        </div>
 
         { isLoading ? <div className='py-1 px-2'>Loading...</div> :
         <table className="w-full border-collapse">

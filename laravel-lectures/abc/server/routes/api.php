@@ -18,3 +18,4 @@ use App\Http\Controllers\DepartmentController;
 Route::get("/staff-list", [StaffController::class, "staffList"])->name("staff.list");
 
 Route::get("/department-list", [DepartmentController::class, "all_departments"])->name("department.list");
+Route::post("/add-department", [DepartmentController::class, "store"])->name('department.add');
