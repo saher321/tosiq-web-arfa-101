@@ -17,7 +17,9 @@ class StudentController extends Controller
         return $students;
     }
     public function store(Request $request){
-        
+    
+        // return $request;
+
         $data = [
             "name"          => $request->name,
             "department_id" => $request->department_id,

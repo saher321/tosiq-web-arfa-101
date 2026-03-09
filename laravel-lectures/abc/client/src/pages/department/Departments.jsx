@@ -38,7 +38,7 @@ const Departments = () => {
         
         <div className='flex items-center justify-between'>
           <h2 className="text-xl font-semibold p-4 border-b border-gray-200">
-            Departments & Students
+            Departments
           </h2>
           <div className='mr-3'>
             <Link className='pointer bg-blue-500 text-white p-1 rounded hover:shadow' to={'/add-department'}>Add Department</Link>
