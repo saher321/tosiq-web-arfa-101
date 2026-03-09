@@ -3,6 +3,8 @@ const BASE_URL_API  = "http://127.0.0.1:8000/api/"
 export const DEPARTMENTS_API    = BASE_URL_API + "department-list"
 export const ADD_DEPARTMENT_API    = BASE_URL_API + "add-department"
 
+export const STUDENTS_API    = BASE_URL_API + "student-list"
+export const ADD_STUDENT_API    = BASE_URL_API + "add-student"
 // ai tools for coding
 // toolify.ai
 

@@ -7,6 +7,7 @@ const Navbar = () => {
       <nav className='p-5 rounded shadow bg-gray-800 text-gray-50 font-bold flex gap-4'>
         <Link to={'/'}>Dashboard</Link>
         <Link to={'/departments'}>Departments</Link>
+        <Link to={'/students'}>Students</Link>
       </nav>
     </div>
   )

@@ -17,7 +17,27 @@ class DepartmentController extends Controller
         return $departments;
     }
     public function store(Request $request){
-        dd($request->all());
+
+        $deptName = $request->department;
+        
+        $data = [
+            "name" => $deptName
+        ];
+        
+        $result   = Department::insert($data);
+
+        if ($result) {
+            $response = [
+              "status" => true,
+              "message"=> "Data saved successfully"
+            ];
+        } else {
+            $response = [
+              "status" => false,
+              "message"=> "Failed to insert data"  
+            ];
+        }
+        return json_encode($response);
     }
 }
 // php artisan install:api

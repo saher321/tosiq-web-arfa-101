@@ -36,13 +36,13 @@ const Departments = () => {
         <div className="min-h-screen">
       <div className="max-w-4xl mx-auto bg-white shadow rounded-lg">
         
-        <div>
+        <div className='flex items-center justify-between'>
           <h2 className="text-xl font-semibold p-4 border-b border-gray-200">
-          Departments & Students
-        </h2>
-        <div>
-          <Link to={'/add-department'}>Add Department</Link>
-        </div>
+            Departments & Students
+          </h2>
+          <div className='mr-3'>
+            <Link className='pointer bg-blue-500 text-white p-1 rounded hover:shadow' to={'/add-department'}>Add Department</Link>
+          </div>
         </div>
 
         { isLoading ? <div className='py-1 px-2'>Loading...</div> :
