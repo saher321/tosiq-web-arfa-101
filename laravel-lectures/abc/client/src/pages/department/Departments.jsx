@@ -1,35 +1,49 @@
 import React, { useEffect, useState } from 'react'
 import AdminLayout from '../../layouts/AdminLayout'
 import axios from  'axios';
-import { DEPARTMENTS_API } from '../../utils/server_apis'
+import { DEPARTMENT_DELETE, DEPARTMENTS_API } from '../../utils/server_apis'
 import { Link } from 'react-router';
+import toast from 'react-hot-toast';
 
 const Departments = () => {
   const [departments, setDepartments] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [openId, setOpenId] = useState(null);
 
-  useEffect(() => {
+  const getDepartments = async () => {
+    try {
+      setIsLoading(true)
+      const depts = await axios.get(DEPARTMENTS_API)
+      setDepartments(depts.data.departments)
 
-    const getDepartments = async () => {
-      try {
-        setIsLoading(true)
-        const depts = await axios.get(DEPARTMENTS_API)
-        setDepartments(depts.data.departments)
-
-        setIsLoading(false)
-      } catch (error) {
-        console.log("ERR: ", error);
-      }
+      setIsLoading(false)
+    } catch (error) {
+      console.log("ERR: ", error);
     }
+  }
 
+  useEffect(() => {
     getDepartments();
-    
   }, [])
 
   const toggle = (id) => {
     setOpenId(openId === id ? null : id);
   };
+
+  const handleDelete = async (e, id) => {
+    e.preventDefault();
+    try {
+      const response = await axios.get(`${DEPARTMENT_DELETE}/${id}`);
+      if (response.data && response.data.status == true) {
+        toast.success(response.data.message)
+        await getDepartments();
+      } else {
+        toast.error(response.data.message)
+      }
+    } catch (error) {
+      console.log("Err: ", error)
+    }
+  }
 
   return (
     <AdminLayout>
@@ -67,6 +81,8 @@ const Departments = () => {
                     >
                       {openId === dept.id ? "Hide" : "View"}
                     </button>
+
+                    <button onClick={(e) => handleDelete(e, dept.id)} className='text-blue-600 text-sm font-bold cursor-pointer hover:underline'>Delete</button>
                   </td>
                 </tr>
 

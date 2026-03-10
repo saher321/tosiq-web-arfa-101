@@ -3,10 +3,11 @@ import AdminLayout from "../../layouts/AdminLayout";
 import { useForm } from "react-hook-form";
 import { ADD_DEPARTMENT_API } from "../../utils/server_apis";
 import axios from "axios";
+import { useNavigate } from "react-router";
 
 const AddDepartment = () => {
   const { register, handleSubmit } = useForm();
-
+  let navigate = useNavigate();
   const addDepartment = (data) => {
     try {
       axios.post(ADD_DEPARTMENT_API, data, {
@@ -14,7 +15,7 @@ const AddDepartment = () => {
           "Content-Type": "application/json",
         },
       });
-      
+      navigate('/departments')
     } catch (error) {
       console.log("ERR: ", error);
     }
