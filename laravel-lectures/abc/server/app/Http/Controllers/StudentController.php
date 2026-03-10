@@ -42,4 +42,21 @@ class StudentController extends Controller
         }
         return json_encode($response);
     }
+    public function delete($id){
+
+        $std = Student::where('id', $id)->first();
+        if ($std) {
+            $std->delete();
+            return json_encode([
+                "status" => true,
+                "message"=> "Student has been deleted!"
+            ]);
+            
+        } else {
+            return json_encode([
+                "status" => false,
+                "message"=> "Student id not found!"
+            ]);
+        }
+    }
 }

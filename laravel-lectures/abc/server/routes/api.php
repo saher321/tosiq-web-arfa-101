@@ -25,3 +25,5 @@ Route::get("/departments/delete/{id}", [DepartmentController::class, "delete"])-
 
 Route::get("/student-list", [StudentController::class, "all_students"])->name("student.list");
 Route::post("/add-student", [StudentController::class, "store"])->name('student.add');
+
+Route::get("/students/delete/{id}", [StudentController::class, "delete"])->name('students.delete');
