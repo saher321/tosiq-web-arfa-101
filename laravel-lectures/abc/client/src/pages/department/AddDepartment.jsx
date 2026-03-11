@@ -6,6 +6,7 @@ import axios from "axios";
 import { useNavigate } from "react-router";
 
 const AddDepartment = () => {
+<<<<<<< Updated upstream
   const { register, handleSubmit } = useForm();
   let navigate = useNavigate();
   const addDepartment = (data) => {
@@ -18,6 +19,24 @@ const AddDepartment = () => {
       navigate('/departments')
     } catch (error) {
       console.log("ERR: ", error);
+=======
+
+    const { register, handleSubmit } = useForm();
+
+    const addDepartment = (data) => {
+        try {
+          const mydata = axios.post(ADD_DEPARTMENT_API, data, {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+              'Access-Control-Allow-Origin' : '*',
+              'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+            }
+          });
+          console.log("Data: ", mydata)
+        } catch (error) {
+          console.log("ERR: ", error)
+        }
+>>>>>>> Stashed changes
     }
   };
   return (
