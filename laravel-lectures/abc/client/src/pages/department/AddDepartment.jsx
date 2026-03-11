@@ -6,26 +6,12 @@ import axios from "axios";
 import { useNavigate } from "react-router";
 
 const AddDepartment = () => {
-<<<<<<< Updated upstream
-  const { register, handleSubmit } = useForm();
-  let navigate = useNavigate();
-  const addDepartment = (data) => {
-    try {
-      axios.post(ADD_DEPARTMENT_API, data, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      navigate('/departments')
-    } catch (error) {
-      console.log("ERR: ", error);
-=======
 
     const { register, handleSubmit } = useForm();
 
-    const addDepartment = (data) => {
+    const addDepartment = async (data) => {
         try {
-          const mydata = axios.post(ADD_DEPARTMENT_API, data, {
+          const mydata = await axios.post(ADD_DEPARTMENT_API, data, {
             headers: {
               'Content-Type': 'multipart/form-data',
               'Access-Control-Allow-Origin' : '*',
@@ -36,9 +22,7 @@ const AddDepartment = () => {
         } catch (error) {
           console.log("ERR: ", error)
         }
->>>>>>> Stashed changes
     }
-  };
   return (
     <AdminLayout>
       <form
@@ -70,6 +54,6 @@ const AddDepartment = () => {
       </form>
     </AdminLayout>
   );
-};
+}
 
 export default AddDepartment;

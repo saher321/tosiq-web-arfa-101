@@ -23,6 +23,10 @@ Route::post("/add-department", [DepartmentController::class, "store"])->name('de
 
 Route::get("/departments/delete/{id}", [DepartmentController::class, "delete"])->name('department.delete');
 
+Route::get("/departments/edit/{id}", [DepartmentController::class, "singleDepartment"])->name('department.edit');
+
+Route::post("/departments/update", [DepartmentController::class, "updateDepartment"])->name('department.update');
+
 Route::get("/student-list", [StudentController::class, "all_students"])->name("student.list");
 Route::post("/add-student", [StudentController::class, "store"])->name('student.add');
 

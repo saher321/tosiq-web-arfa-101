@@ -65,7 +65,42 @@ class DepartmentController extends Controller
                 ]);
             }
         }
-        
+    }
+
+    public function singleDepartment($id){
+        $data = Department::where('id', $id)->first();
+        if ($data) {
+            return json_encode([
+                "status"    => true,
+                "dept"      => $data
+            ]);
+        } else {
+            return json_encode([
+                "status" => false,
+                "message"=> "Dept. id not found!"
+            ]);
+        }
+
+    }
+
+    public function updateDepartment(Request $request) {
+        $id = $request->id;
+        $name = $request->name;
+        $response = Department::where('id', $id)->update(['name' => $name]);
+
+        if ($response) {
+            $response = [
+              "status" => true,
+              "message"=> "Data has been updated successfully"
+            ];
+        } else {
+            $response = [
+              "status" => false,
+              "message"=> "Failed to update data"
+            ];
+        }
+
+        return json_encode($response);
     }
 
 }
