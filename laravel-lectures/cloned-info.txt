@@ -1,0 +1,16 @@
+add data => add request;
+
+del data => delete request;
+
+update data =>  get(id) :: getting specific item, post(id, data);
+
+insert data => post(data);
+-------------------------------------------
+
+when you cloned any laravel project do this
+
+npm i
+composer i
+cp .env.example .env
+php artisan key:generate
+
