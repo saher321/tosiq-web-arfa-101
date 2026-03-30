@@ -71,18 +71,17 @@ app.get('/users', (req, res) => {
 })
 
 // filter request
+// http://localhost:5000/users/rolename
 app.get('/users/:role', (req, res) => {
     let userRole = req.params.role
     // let userRole = req.body.role
 
-    
     const filteredUsers = users.filter( (user) => {
-        return user.role == userRole
+      return user.role == userRole
     })
 
     if (filteredUsers.length == 0) 
-        return res.send({status: false, message: "No users were found"})
-
+      return res.send({status: false, message: "No users were found"})
 
     return res.send({ status: 200, users: filteredUsers})
 })
