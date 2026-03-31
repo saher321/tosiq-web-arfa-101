@@ -61,7 +61,6 @@ export const allUsers =  (req, res) => {
   res.send({ status: 200, count: users.length, users });
 }
 
-
 // filter request :: roles => admin, vendor, user
 // http://localhost:5000/users/rolename
 export const filteredUser = (req, res) => {
