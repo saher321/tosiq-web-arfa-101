@@ -8,6 +8,9 @@ export const getAllDept = async (req, res) => {
             return res.send({status: true, message: "No records were found!"})
 
         return res.send({status: true, total: departments.length, departments})
+        // status: true
+        // total: 3
+        // departments: {[...]}
     } catch (error) {
         console.log("ERR: ", error)
     }

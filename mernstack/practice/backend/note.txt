@@ -1,0 +1,4 @@
+Mern
+
+backend
+    npm init -y
