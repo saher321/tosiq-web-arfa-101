@@ -6,7 +6,7 @@ dotenv.config()
 export const connectDB = async () => {
     try {
 
-        const conn = await mongoose.connect(process.env.MONGODB_LIVE_URI)
+        const conn = await mongoose.connect(process.env.MONGODB_LOCAL_URI)
         if (conn) {
             console.log("Database is connected successful:", conn.connection.host)
         } else {

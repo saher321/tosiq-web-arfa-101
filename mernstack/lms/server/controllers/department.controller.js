@@ -12,3 +12,15 @@ export const getAllDept = async (req, res) => {
         console.log("ERR: ", error)
     }
 }
+
+export const addDept = async (req, res) => {
+    const { name } = req.body
+    if (!name) return res.send({status: false, message:"Please provide dept name"})
+
+    try {
+        const dept = new Department({ name })
+        dept.save();
+    } catch (error) {
+        console.log("ERR: ", error)
+    }
+}
