@@ -4,11 +4,12 @@ import dotenv from 'dotenv'
 import { connectDB } from "./config/db.js";
 import userRoute from "./modules/user/user.route.js";
 import departmentRoute from "./modules/department/department.route.js";
-
+import cors from 'cors'
 // configurations
 dotenv.config()
 const app = express();
 app.use(express.json())
+app.use(cors())
 
 const PORT = process.env.PORT || 5000
 const PREFIX = '/api/v1'

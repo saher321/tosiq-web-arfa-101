@@ -23,6 +23,7 @@ LMS
             classes
 
 Entities
+    - authentication (login, logout, register, forgot password, reset password)
     - dashboard
     - users
     - departments
