@@ -1,5 +1,5 @@
 import express from 'express'
-import { addDept, getAllDept } from '../controllers/department.controller.js'
+import { addDept, getAllDept } from './department.controller.js'
 
 const departmentRoute = express.Router()
 

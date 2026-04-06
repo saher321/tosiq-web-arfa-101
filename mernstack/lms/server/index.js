@@ -2,8 +2,8 @@
 import express from "express";
 import dotenv from 'dotenv'
 import { connectDB } from "./config/db.js";
-import userRoute from "./routes/user.route.js";
-import departmentRoute from "./routes/department.route.js";
+import userRoute from "./modules/user/user.route.js";
+import departmentRoute from "./modules/department/department.route.js";
 
 // configurations
 dotenv.config()

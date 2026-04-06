@@ -1,0 +1,29 @@
+LMS
+    server
+        node_modules
+        controllers
+            - dept.controller.js
+        models
+            - dept.model.js
+        routes
+            - dept.route.js
+
+        index.js
+        .env
+
+        modules
+            teachers
+                - teacher.controller.js
+                - teacher.model.js
+                - teacher.route.js
+                - teachersFunctions.js
+            users
+            students
+            courses
+            classes
+
+Entities
+    - dashboard
+    - users
+    - departments
+    - students
