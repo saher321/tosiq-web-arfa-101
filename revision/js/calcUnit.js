@@ -6,7 +6,7 @@ function calcUnit() {
     const standardUnit = 56;
     const commercialUnit = 70;
     
-    const subsity = 170
+    const subsity = 170;
     // range 50 - 199
     if ( cUnit >= 50 && cUnit <= 199 ) {
 
