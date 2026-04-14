@@ -2,18 +2,31 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Mail, Lock, User, Briefcase, Eye, EyeOff } from 'lucide-react';
+import { useForm } from 'react-hook-form';
+import axios from 'axios';
+import toast from 'react-hot-toast';
+import { USER_REG_URL } from '../../utils/api.js';
 
 export default function Register() {
-  const [formData, setFormData] = useState({ name: '', email: '', role: 'student', password: '' });
   const [showPassword, setShowPassword] = useState(false);
+
   const [submitted, setSubmitted] = useState(false);
 
-  const update = (field, value) => setFormData((prev) => ({ ...prev, [field]: value }));
+  const { register, handleSubmit, reset, setValue } = useForm();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setSubmitted(true);
-  };
+  const registerUser = async (data) => {
+    try {
+      const response = await axios.post(USER_REG_URL, data);
+      if (response.data.status == true) {
+        setSubmitted(true);
+        toast.success(response.data.message);
+      } else {
+        toast.error(response.data.message)
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   if (submitted) {
     return (
@@ -29,7 +42,7 @@ export default function Register() {
         </div>
         <h2 className="text-2xl font-bold text-gray-900 mb-2">Request Submitted!</h2>
         <p className="text-gray-500 mb-8">Your registration request is under review. We&apos;ll notify you soon.</p>
-        <Link to="/login" className="text-primary-600 font-semibold hover:text-primary-700 text-sm">
+        <Link to="/dashboard" className="text-primary-600 font-semibold hover:text-primary-700 text-sm">
           &larr; Back to Login
         </Link>
       </motion.div>
@@ -47,7 +60,7 @@ export default function Register() {
         <p className="text-gray-500">Request access to the LMS platform.</p>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={(handleSubmit(registerUser))} className="space-y-4">
         <div>
           <label htmlFor="reg-name" className="block text-sm font-medium text-gray-700 mb-1.5">Full Name</label>
           <div className="relative">
@@ -55,11 +68,9 @@ export default function Register() {
             <input
               id="reg-name"
               type="text"
-              required
+              {...register('name')}
               className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
               placeholder="John Doe"
-              value={formData.name}
-              onChange={(e) => update('name', e.target.value)}
             />
           </div>
         </div>
@@ -71,11 +82,9 @@ export default function Register() {
             <input
               id="reg-email"
               type="email"
-              required
+              {...register('email')}
               className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
               placeholder="john@example.com"
-              value={formData.email}
-              onChange={(e) => update('email', e.target.value)}
             />
           </div>
         </div>
@@ -86,9 +95,8 @@ export default function Register() {
             <Briefcase className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
             <select
               id="reg-role"
+              {...register('role')}
               className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all appearance-none"
-              value={formData.role}
-              onChange={(e) => update('role', e.target.value)}
             >
               <option value="student">Student</option>
               <option value="teacher">Teacher</option>
@@ -104,11 +112,9 @@ export default function Register() {
             <input
               id="reg-password"
               type={showPassword ? 'text' : 'password'}
-              required
+              {...register('password')}
               className="w-full pl-10 pr-10 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
               placeholder="••••••••"
-              value={formData.password}
-              onChange={(e) => update('password', e.target.value)}
             />
             <button
               type="button"

@@ -1,3 +1,6 @@
+import User from "./user.model.js";
+import bcrypt from "bcryptjs";
+
 const users = [
   {
     id: 1,
@@ -57,7 +60,7 @@ const users = [
   },
 ];
 
-export const allUsers =  (req, res) => {
+export const allUsers = (req, res) => {
   res.send({ status: 200, count: users.length, users });
 }
 
@@ -75,4 +78,34 @@ export const filteredUser = (req, res) => {
     return res.send({ status: false, message: "No users were found" });
 
   return res.send({ status: 200, users: filteredUsers });
+}
+
+export const createUser = async (req, res) => {
+  const data = req.body;
+  if (!data.name || !data.email || !data.password || !data.role) {
+    return res.send({ status: false, message: "All fields are required" });
+  }
+
+  try {
+    const user = await User.findOne({ email: data.email });
+    if (user) {
+      return res.send({ status: false, message: "User already exists" });
+    }
+
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(data.password, salt);
+
+    const newUser = new User({
+      name: data.name,
+      email: data.email,
+      password: hashedPassword,
+      role: data.role
+    });
+
+    await newUser.save();
+    return res.send({ status: true, message: "User created successfully" });
+  } catch (error) {
+    console.log(error)
+    return res.send({ status: false, message: "Network error" });
+  }
 }
