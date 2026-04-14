@@ -42,7 +42,7 @@ export default function Register() {
         </div>
         <h2 className="text-2xl font-bold text-gray-900 mb-2">Request Submitted!</h2>
         <p className="text-gray-500 mb-8">Your registration request is under review. We&apos;ll notify you soon.</p>
-        <Link to="/dashboard" className="text-primary-600 font-semibold hover:text-primary-700 text-sm">
+        <Link to="/login" className="text-primary-600 font-semibold hover:text-primary-700 text-sm">
           &larr; Back to Login
         </Link>
       </motion.div>

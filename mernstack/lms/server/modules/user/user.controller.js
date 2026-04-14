@@ -1,3 +1,4 @@
+import { sendEmail } from "./sendEmail.js";
 import User from "./user.model.js";
 import bcrypt from "bcryptjs";
 
@@ -95,6 +96,13 @@ export const createUser = async (req, res) => {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(data.password, salt);
 
+    const html = `
+    <h1>Thank you! You have successfully created your account in LMS Portal</h1>
+    <p>Name: ${data.name}</p>
+    <p>Email: ${data.email}</p>
+    <p>Role: ${data.role}</p>
+    `
+    sendEmail(data.email, "User Created Successfully 🎉", html);
     const newUser = new User({
       name: data.name,
       email: data.email,
