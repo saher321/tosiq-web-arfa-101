@@ -1,7 +1,9 @@
 import { sendEmail } from "./sendEmail.js";
 import User from "./user.model.js";
 import bcrypt from "bcryptjs";
-
+import jwt from "jsonwebtoken";
+import dotenv from 'dotenv'
+dotenv.config()
 const users = [
   {
     id: 1,
@@ -116,4 +118,35 @@ export const createUser = async (req, res) => {
     console.log(error)
     return res.send({ status: false, message: "Network error" });
   }
+}
+
+export const login = async (req, res) => {
+  const { email, password } = req.body;
+  if (!email || !password) {
+    return res.send({ status: false, message: "Please fill all the fields" })
+  }
+
+  try {
+    const user = await User.findOne({ email })
+    if (!user) {
+      return res.send({ status: false, message: "User not found" })
+    }
+
+    let isMatched = await bcrypt.compare(password, user.password)
+    if (!isMatched) {
+      return res.send({ status: false, message: "Invalid password" })
+    }
+
+    // sign (usr-info, secret-code, expire-duration)
+    const token = jwt.sign({ id: user._id, name: user.name, email: user.email, role: user.role }, process.env.JWT_SECRET, { expiresIn: "1h" })
+    if (token) {
+      return res.send({ status: true, message: "Login successful", token })
+    } else {
+      return res.send({ status: false, messaage: "Failed to create session" })
+    }
+  } catch (error) {
+    console.log("ERR: ", error)
+    return res.send({ status: false, message: "Network error" })
+  }
+
 }
