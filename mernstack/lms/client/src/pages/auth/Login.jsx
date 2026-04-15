@@ -2,16 +2,30 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Mail, Lock, LogIn, Eye, EyeOff } from 'lucide-react';
+import { useForm } from 'react-hook-form';
+import axios from 'axios';
+import { USER_LOGIN_URL } from '../../utils/api';
+import toast from 'react-hot-toast';
 
 export default function Login() {
-  const navigate = useNavigate();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const { register, handleSubmit, reset, setValue } = useForm();
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    navigate('/dashboard');
+  const loginUser = async (data) => {
+    try {
+      const response = await axios.post(USER_LOGIN_URL, data);
+      if (response.data.status == true) {
+        console.log(response.data)
+        localStorage.setItem("lms_user_token", response.data.token);
+        toast.success(response.data.message);
+        navigate('/dashboard');
+      } else {
+        toast.error(response.data.message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -25,7 +39,7 @@ export default function Login() {
         <p className="text-gray-500">Please enter your details to sign in.</p>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-5">
+      <form onSubmit={handleSubmit(loginUser)} className="space-y-5">
         <div>
           <label htmlFor="login-email" className="block text-sm font-medium text-gray-700 mb-1.5">
             Email Address
@@ -35,11 +49,9 @@ export default function Login() {
             <input
               id="login-email"
               type="email"
-              required
+              {...register('email')}
               className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
               placeholder="admin@edupanel.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
         </div>
@@ -58,11 +70,9 @@ export default function Login() {
             <input
               id="login-password"
               type={showPassword ? 'text' : 'password'}
-              required
+              {...register('password')}
               className="w-full pl-10 pr-10 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
               placeholder="••••••••"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
             />
             <button
               type="button"
