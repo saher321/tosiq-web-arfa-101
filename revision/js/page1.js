@@ -1,6 +1,6 @@
-var a=10
+var a = 10
 
-let b=10
+let b = 10
 
 const isAdmin = true
 
@@ -12,15 +12,15 @@ var a = 20;
 // const:: neighter redeclare nor re-assign
 
 const coupen_codes = [
-    { "code1" : 3},
-    { "code2" : 2.6},
-    { "code3" : 5},
+    { "code1": 3 },
+    { "code2": 2.6 },
+    { "code3": 5 },
 ]
 
-let purchasedAmount = 9570
+let purchasedAmount = 11000
 const disc = 3;
-if (purchasedAmount >= 10000){
-    let discValue = purchasedAmount /100 * disc
+if (purchasedAmount >= 10000) {
+    let discValue = purchasedAmount / 100 * disc
 
     let newPrice = purchasedAmount - discValue
 

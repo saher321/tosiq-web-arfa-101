@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="item" placeholder="Add new item">
+    <button onclick="addItemToList()">Add item</button>
+    <select id="itemList"></select>
+    <hr>
+
+    <table border="1" cellspacing="0" cellpadding="15">
+        <tr>
+            <td>
+                Url title
+            </td>
+            <td>
+                <input type="text" id="url-title" placeholder="Enter url title">
+            </td>
+            
+        </tr>
+        <tr>
+            
+            <td>
+                Url
+            </td>
+            <td>
+                <input type="text" id="url" placeholder="Enter url">
+            </td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td>
+                <button onclick="addUrltoList()">Add url</button>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <select onchange="visitUrl()" id="urlList"></select>
+            </td>
+        </tr>
+    </table>
+
+
+    <!-- js -->
+    <script src="../js/addItem.js"></script>
+</body>
+
+</html>
