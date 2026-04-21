@@ -53,3 +53,21 @@ function getStatus(){
         renderCategories(filtertedData)
     }
 }
+
+const sample =  [ 24, "Ali", "C", "Company information", "A", "e", 753, "Usman" ]
+
+const numbers = [];
+const words = [];
+const letters = [];
+
+sample.map((item) => {
+    if (typeof item == 'number'){
+        numbers.push(item);
+    } else if(typeof item == 'string' && item.length > 1 ){
+        words.push(item)
+    } else {
+        letters.push(item)
+    }
+})
+
+console.log(numbers, words, letters)
