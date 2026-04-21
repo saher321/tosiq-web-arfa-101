@@ -41,6 +41,9 @@ function renderCategories(productCategories) {
 
 function getStatus(){
     let selectedStatus = document.getElementById("status").value;
+    
+    let tbody = document.getElementById("pCategories");
+    tbody.innerHTML = "";
 
     if (selectedStatus == ""){
         renderCategories(productCategories)
