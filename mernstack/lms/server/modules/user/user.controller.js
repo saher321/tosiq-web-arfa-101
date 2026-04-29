@@ -1,9 +1,10 @@
-import { sendEmail } from "./sendEmail.js";
 import User from "./user.model.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import dotenv from 'dotenv'
+import { generateOtp, sendEmail } from '../../utils/common.js'
 dotenv.config()
+
 const users = [
   {
     id: 1,
@@ -149,4 +150,37 @@ export const login = async (req, res) => {
     return res.send({ status: false, message: "Network error" })
   }
 
+}
+
+export const forgotPassword = async (req, res) => {
+  const { email } = req.body
+  if (!email) return res.send({
+    status: false,
+    message: "Provide your email"
+  })
+
+  try {
+    const user = await User.findOne({email: email})
+    if (!user) return res.send({
+      status: false,
+      message: "Email is not valid"
+    })
+    const otp = generateOtp();
+    user.otp = otp;
+    user.is_otp_verified = false;
+    user.save();
+    const html = `
+    Your requested otp is: ${otp}
+    `
+    sendEmail(user.email, "Your reset password OTP", html)
+
+    return res.send({
+      status: true,
+      message: "Otp has been send to your email"
+    })
+
+    
+  } catch (error) {
+    
+  }
 }

@@ -1,15 +1,31 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Mail, ArrowLeft, Send } from 'lucide-react';
+import { useForm } from 'react-hook-form';
+import axios from 'axios';
+import { FORGOT_PASS_URL } from '../../utils/api.js';
+import toast from 'react-hot-toast';
 
 export default function ForgotPassword() {
-  const [email, setEmail] = useState('');
+  const { register, handleSubmit } = useForm();
   const [submitted, setSubmitted] = useState(false);
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setSubmitted(true);
+  const handleForgotPassword = async (data) => {
+    try {
+      const response = await axios.post(FORGOT_PASS_URL, data);
+      if (response.data.status == true) {
+        localStorage.setItem('resetEmail', data.email);
+        toast.success(response.data.message);
+        navigate('/reset-password');
+      } else {
+        toast.error(response.data.message);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Network error. Please try again later.");      
+    }
   };
 
   return (
@@ -29,7 +45,7 @@ export default function ForgotPassword() {
       </div>
 
       {!submitted ? (
-        <form onSubmit={handleSubmit} className="space-y-5">
+        <form onSubmit={handleSubmit(handleForgotPassword)} className="space-y-5">
           <div>
             <label htmlFor="forgot-email" className="block text-sm font-medium text-gray-700 mb-1.5">
               Email Address
@@ -37,13 +53,12 @@ export default function ForgotPassword() {
             <div className="relative">
               <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
               <input
+                { ...register('email') }
                 id="forgot-email"
                 type="email"
                 required
                 className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
                 placeholder="Enter your registered email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
           </div>
